@@ -31,10 +31,11 @@ def playlists_submit():
     playlist = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'videos': request.form.get('videos').split()
+        'videos': request.form.get('videos').split(),
+        'rating': request.form.get('rating')
     }
     playlists.insert_one(playlist)
-    #print(request.form.to_dict()) to print into the terminal in dictionalry form
+    #print(request.form.to_dict()) #to print into the terminal in dictionalry form
     return redirect(url_for('playlists_index'))
 
 if __name__ == '__main__':
