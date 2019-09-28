@@ -2,19 +2,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/playlists/{{playlist._id}}'>
-    {% include 'partials/playlists_form.html' %}
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/playlists/{{playlist._id}}'>
+            <!-- https://stackoverflow.com/questions/45602843/whats-the-purpose-of-using-method-fieldput-or-input-type-hidden-name-m -->
+            <input type='hidden' name='_method' value='PUT'/>
+            {% include 'partials/playlists_form.html' %}
 
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Playlist</button>
-        <!-- <button type='submit'>Cancel</button> -->
-    </p>
-</form>
+            <!-- BUTTON -->
+            <div class = 'form-group'>
+            <p>
+                <button class = 'btn btn-primary' type='submit'>Save Playlist</button>
+                <form action="/">
+                    <!-- cancel button -->
+                    <!-- https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+                    <input class='btn btn-primary'type="submit" value="Cancel" Cancel<button/>
+                
+                </form>
+            </p>
+            </div>
+        </form>
+    </div>
+</div>
 
-<!-- cancel button -->
-<!-- https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
-<form action="/">
-    <input type="submit" value="Cancel" />
-</form>
+
+
 {% endblock %}
